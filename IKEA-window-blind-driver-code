@@ -117,6 +117,10 @@ def levelEventHandler(currentLevel) {
         sendEvent(name: "level", value: currentLevel)
         sendEvent(name: "position", value: currentLevel)
         if (currentLevel == 0 || currentLevel >= 97) {
+            if (currentLevel >= 97 && openLevel && openLevel >= 97) {
+                sendEvent(name: "level", value: 100)
+                sendEvent(name: "position", value: 100)
+            }	
             sendEvent(name: "windowShade", value: currentLevel == 0 ? "closed" : "open")
             sendEvent(name: "switch", value: level == 0 ? "off" : "on", displayed: false)
         } else {
