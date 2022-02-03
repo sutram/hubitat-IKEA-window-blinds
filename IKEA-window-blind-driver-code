@@ -136,10 +136,10 @@ def levelEventHandler(currentLevel) {
 def updateFinalState() {
     def level = device.currentValue("level")
     if (debugOutput) log.debug "updateFinalState: ${level}"
-    if (openLevel && openLevel >= 97) {
+    if (level >= 97 && openLevel && openLevel >= 97) {
         sendEvent(name: "level", value: 100)
         sendEvent(name: "position", value: 100)
-    }	        
+    }        
     sendEvent(name: "windowShade", value: level == 0 ? "closed" : "open")
     sendEvent(name: "switch", value: level == 0 ? "off" : "on", displayed: false)
 }
