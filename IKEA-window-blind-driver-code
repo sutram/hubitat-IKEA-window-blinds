@@ -102,8 +102,8 @@ def parse(String description) {
             }
         } 
         if (descMap?.clusterInt == CLUSTER_BATTERY_LEVEL && descMap.value) {
-            if (debugOutput) log.debug "attr: ${descMap?.attrInt}, value: ${descMap?.value}, descValue: ${Integer.parseInt(descMap.value, 16)}"
-            sendEvent(name: "battery", value: Integer.parseInt(descMap.value, 16), unit: "%")
+            if (debugOutput) log.debug "attr: ${descMap?.attrInt}, value: ${descMap?.value}, descValue: ${(Integer.parseInt(descMap.value, 16)/2)}"
+            sendEvent(name: "battery", value: (Integer.parseInt(descMap.value, 16)/2), unit: "%")
         }
     }
 }
